@@ -1,3 +1,5 @@
+@import "compass/css3";
+
 body {
   font-size: 100%;
   font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
@@ -19,6 +21,141 @@ img {
 nav a:hover {
   text-decoration: underline;
 }
+
+
+/*START -- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+/*+ptt new add*/
+.item-container {
+  border: 1px solid lightgrey;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+/* grid-cell */
+.col-1of1 {
+  flex: 0 0 100%;
+}
+
+.col-1of1 img{
+  width: 100%;
+}
+
+.col-1of1> p{
+  padding: 0 1rem 0.5rem;
+}
+
+.col-1of2 {
+  flex: 0 0 48%;
+}
+
+.col-1of2 img{
+  width: 100%;
+}
+
+.col-1of2> p{
+  padding: 0 1rem 0.5rem;
+}
+
+.col-1of2 h3{
+  background: #ccddff;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem 0.2rem;
+}
+
+.col-1of3{
+  flex: 0 0 32%;
+  border: solid 1px lightgrey;
+}
+
+.col-1of3 img{
+  width: 100%;
+}
+
+
+.col-1of3 > p{
+  padding: 0 1rem 0.5rem;
+}
+
+.col-1of3 > h3{
+  background: lightgrey;
+  height: 1.1rem;
+  font-size: 1rem;
+  padding: 0.2rem 1.1rem 1.5rem;
+}
+
+/* gutters to the grid */
+.grid-guttered > [class^="col-"] {
+  padding-left: 0.1rem;
+}
+
+
+/*START $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+/*+PTT NEW ADD*/
+.navigation {
+  list-style: none;
+  margin: 0;
+  background: #333;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+@media all and (max-width: 1200px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .navigation {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .navigation a {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+  .item-container {
+    display: block;
+  }
+  .col-1of2 , .col-1of3 {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+}
+
+/*END $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
+
+
+
+
+
+
 
 /**************** HERO *****************/
 
