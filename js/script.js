@@ -49,3 +49,20 @@ var products = [
   }
 ]
 
+
+function confirmEmail() {
+  event.preventDefault();
+  var email = document.mailing.email.value; // document.getElementById("email").value; should work too
+  var msg = "Thanks for signing up for our mailing list, " + email + "!. Click upper-right corner(x) to close";
+  console.log(msg);
+  var msg1 = '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg + '</div>'
+  document.getElementById("email-confirm").innerHTML = msg1;
+}
+
+// keep track number of products in card and display the total number
+var numProduct = 0;
+function addToCart() {
+  numProduct += 1;
+  document.getElementById("total-inCart").innerHTML = numProduct;
+  // return false;
+}
