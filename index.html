@@ -3,16 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>Winter Scarves</title>
-  <!-- CSS  -->
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/main.css">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/main.css">
+
   <!-- jQuery library  for dismissable Alert -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
   <!-- TODO: replace with your personal Font Awesome CDN link -->
@@ -57,7 +56,7 @@
       <div class="row">
         <!-- left content -->
         <aside class="col-md-2">
-            <form name="mailing" onsubmit="confirmEmail()">
+            <form name="mailing" method="POST" onsubmit="confirmEmail()">
                 <div class="form-group">
                   <label for="email">Sign up for our mailing list:</label>
                   <input type="email" id="email" name="email" class="form-control" required>
