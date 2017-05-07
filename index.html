@@ -6,13 +6,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+  <!-- jQuery library  for dismissable Alert -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- CSS  -->
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/main.css">
-
-  <!-- jQuery library  for dismissable Alert -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
+  <!-- <script type="text/javascript" src="js/script.js"></script> -->
 
   <!-- TODO: replace with your personal Font Awesome CDN link -->
   <script src="https://use.fontawesome.com/416cfe9f20.js"></script>
@@ -25,12 +26,44 @@
         <li><a href="#">Hats</a></li>
         <li><a href="#">Gloves</a></li>
         <li><a href="#">Scarves</a></li>
-        <!-- <li class="cart-info">f
+        <!-- <li class="cart-info">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         </li> -->
-        <li class="col-xl-1"><a href="#" class=""><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="num-in-cart" id="total-inCart">0</span></a></li>
+        <li class="col-xl-1"><a href="#" class="" data-toggle="modal" data-target="#cartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="num-in-cart" id="total-inCart">0</span></a></li>
       </ul>
     </nav>
+
+<!--test modal cart  -->
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" role="dialog">
+      <div class="modal-dialog modal-md">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h1> <i class="fa fa-shopping-cart"></i>My Cart</h1>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Quantiy</th>
+                  <th>Sub Total</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
 
     <div class="container-fluid">
         <div class="row">
@@ -59,7 +92,7 @@
             <form name="mailing" onsubmit="confirmEmail()">
                 <div class="form-group">
                   <label for="email">Sign up for our mailing list:</label>
-                  <input type="email" id="email" name="email" class="form-control" required>
+                  <input type="email" id="email" name="email" class="form-control" required placeholder="Email">
                 </div>
                 <input type="submit" value="Submit" class="btn btn-primary btn-xs form-control">
             </form>
@@ -107,7 +140,7 @@
                       <div class="product-img">
                         <img src="images/multi-color-200w.jpeg" alt="multi color scarf">
                       </div>
-                      <p>The Who What Where Oversize Color-Block Square Scarf is big, bold, and designed to twist and wrap any way you wish. All the colors of the season are harmonized in this oversize accent, so you can adjust to contrast or match your outfit; soft and lush, it’s your stylish standoff against cold AC and unexpected fall breezes. 100% acrylic.</p>
+                      <p>The Who What Where Oversize Color-Block Square Scarf is big, bold, and designed to twist and wrap any way you wish. All the colors of the season are harmonized in this oversize accent, so you can adjust to contrast or match your outfit; soft and lush, itâ€™s your stylish standoff against cold AC and unexpected fall breezes. 100% acrylic.</p>
                       <p>Price: $22.99</p>
                       <div class="add-to-bag">
                         <input type="submit" value="Add To Cart" onclick="addToCart()">
