@@ -9,7 +9,6 @@ p {
   color: #2d2d2d;
 }
 
-/* TODO: size images manually so this is not necessary */
 img {
   max-height: 10rem;
 }
@@ -41,7 +40,8 @@ nav a:hover {
   color: white;
 }
 
-#total-inCart {
+.num-in-cart {
+
   font-size: 0.7rem;
   background: green;
   padding:0.2rem;
@@ -77,11 +77,12 @@ input[type="submit"] {
   color: white;
 }
 
-/*********** PRODUCTS SECTION ***********/
-
-section {
-  padding: 0 .75rem;
+.email-text {
+  font-size: 0.9rem;
+  display: inline-flex;
 }
+
+/*********** PRODUCTS SECTION ***********/
 
 h2 {
   font-size: 1.5rem;
@@ -118,7 +119,9 @@ h3 {
 }
 
 .item p {
-  padding: 0 0.7rem;
+  padding: 0 0.5rem;
+  font-family: 'Unna', cursive;
+  font-weight:lighter;
 }
 
 .item img {
@@ -129,38 +132,41 @@ h3 {
   padding: 1.5rem 0 0 1.5rem;
 }
 
-.product-img {
+.item-div {
+  float:left;
+  width: 100%
+}
+
+.item-div .product-img {
   width: 50%;
   align-items: center;
   align-self: center;
   align-content: center;
   margin: auto;
+  text-align:center;
+}
+
+.item-div .text {
+  font-size: 0.7rem;
+  float:left;
+  width:4rem;
+  overflow:hidden;
+}
+
+.item-div .text p {
+  color: grey;
 }
 
 .add-to-bag {
   background-color: #eee;
   padding-left: 2rem;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   margin: auto;
 }
 
-
-/*.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}*/
-
-/*.col-sm-4 {
-  border:1px solid lightgrey;
-  display: flex;
-  flex-direction:column;
-  padding: 1rem;
-}*/
-
 /**************** FOOTER *****************/
+
 .footer {
   padding: 0.5rem;
   background: #3D7FCF;
@@ -170,6 +176,8 @@ h3 {
 .footer p {
   color: white;
 }
+
+/**************** MQ *****************/
 
 @media all and (max-width: 1200px) {
   .navigation {
@@ -191,5 +199,17 @@ h3 {
   }
   .navigation li:last-of-type a {
     border-bottom: none;
+  }
+
+  .product-img {
+    padding-left: 1rem;
+    align-self: center;
+  }
+}
+
+@media all and (max-width: 950px) {
+  .col-md-2 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
