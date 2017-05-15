@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Winter Scarves</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -13,6 +15,7 @@
   <!-- CSS  -->
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Unna">
   <!-- <script type="text/javascript" src="js/script.js"></script> -->
 
   <!-- TODO: replace with your personal Font Awesome CDN link -->
@@ -29,12 +32,11 @@
         <!-- <li class="cart-info">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         </li> -->
-        <li class="col-xl-1"><a href="#" class="" data-toggle="modal" data-target="#cartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="num-in-cart" id="total-inCart">0</span></a></li>
+        <li class="col-xl-1"><a href="#" class="" onclick="getCartData()" data-toggle="modal" data-target="#cartModal"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="num-in-cart" id="total-inCart">0</span></a></li>
       </ul>
     </nav>
 
-<!--test modal cart  -->
-    <!-- Modal -->
+    <!-- Modal cart -->
     <div class="modal fade" id="cartModal" role="dialog">
       <div class="modal-dialog modal-md">
         <!-- Modal content-->
@@ -45,15 +47,18 @@
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <th>Prod-ID</th>
                   <th>Product</th>
-                  <th>Quantiy</th>
                   <th>Sub Total</th>
                 </tr>
               </thead>
+              <!--  cart data will be inserted here -->
+              <tbody id="cart-content">
+              </tbody>
             </table>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            <p>Total number items: <span id="numInCart"></span></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -62,8 +67,6 @@
 
       </div>
     </div>
-
-
 
     <div class="container-fluid">
         <div class="row">
@@ -91,7 +94,7 @@
         <aside class="col-md-2">
             <form name="mailing" onsubmit="confirmEmail()">
                 <div class="form-group">
-                  <label for="email">Sign up for our mailing list:</label>
+                  <label for="email" class="email-text">Sign up for our mailing list:</label>
                   <input type="email" id="email" name="email" class="form-control" required placeholder="Email">
                 </div>
                 <input type="submit" value="Submit" class="btn btn-primary btn-xs form-control">
@@ -109,13 +112,20 @@
                   <div class="col-sm-4">
                     <div class="item">
                       <h3>Reversible Plaid</h3>
-                      <div class="product-img">
-                        <img src="images/reversible-plaid-200w.jpg" alt="reversible plaid scarf">
+                      <div class="item-div">
+                        <div class="text">
+                          <p>prod-1</p>
+                        </div>
+                        <div class="product-img">
+                          <img src="images/reversible-plaid-200w.jpg" alt="reversible plaid scarf">
+                        </div>
                       </div>
+
                       <p>Two classic patterns in one great look: This supersoft and cozy reversible scarf instantly doubles your street-style cred. 100% acrylic.</p>
                       <p>Price: $26.99</p>
                       <div class="add-to-bag">
-                        <input type="submit" value="Add To Cart" onclick="addToCart()">
+                        <input type="submit" value="Add To Cart" id="1" onclick="addToCart(this.id)">
+                        <input type="submit" value="Remove" onclick="RemoveFromCart(1)">
                       </div>
                     </div>
                   </div>
@@ -123,13 +133,19 @@
                   <div class="col-sm-4">
                     <div class="item">
                       <h3>Fringed Plaid</h3>
-                      <div class="product-img">
-                        <img src="images/fringed-plaid-200w.jpeg" alt="fringed plaid scarf">
+                      <div class="item-div">
+                        <div class="text">
+                          <p>prod-2</p>
+                        </div>
+                        <div class="product-img">
+                          <img src="images/fringed-plaid-200w.jpeg" alt="fringed plaid scarf">
+                        </div>
                       </div>
                       <p>Generously sized, extra soft and featuring a dazzling fringe, this scarf is rendered in a versatile gray, black and white plaid. Expertly beat the cold with style. 100% acrylic.</p>
                       <p>Price: $18.99</p>
                       <div class="add-to-bag">
-                        <input type="submit" value="Add To Cart" onclick="addToCart()">
+                        <input type="submit" value="Add To Cart" id="2" onclick="addToCart(this.id)">
+                        <input type="submit" value="Remove" onclick="RemoveFromCart(2)">
                       </div>
                     </div>
                   </div>
@@ -137,13 +153,19 @@
                   <div class="col-sm-4">
                     <div class="item">
                       <h3>Multi Color</h3>
-                      <div class="product-img">
-                        <img src="images/multi-color-200w.jpeg" alt="multi color scarf">
+                      <div class="item-div">
+                        <div class="text">
+                          <p>prod-3</p>
+                        </div>
+                        <div class="product-img">
+                          <img src="images/multi-color-200w.jpeg" alt="multi color scarf">
+                        </div>
                       </div>
                       <p>The Who What Where Oversize Color-Block Square Scarf is big, bold, and designed to twist and wrap any way you wish. All the colors of the season are harmonized in this oversize accent, so you can adjust to contrast or match your outfit; soft and lush, itâ€™s your stylish standoff against cold AC and unexpected fall breezes. 100% acrylic.</p>
                       <p>Price: $22.99</p>
                       <div class="add-to-bag">
-                        <input type="submit" value="Add To Cart" onclick="addToCart()">
+                        <input type="submit" value="Add To Cart" id="3" onclick="addToCart(this.id)">
+                        <input type="submit" value="Remove" onclick="RemoveFromCart(3)">
                       </div>
                     </div>
                   </div>
@@ -155,13 +177,19 @@
                   <div class="col-sm-4">
                     <div class="item">
                       <h3>Northern Lights</h3>
-                      <div class="product-img">
-                        <img src="images/northern-lights-200w.jpg" alt="northern lights scarf">
+                      <div class="item-div">
+                        <div class="text">
+                          <p>prod-4</p>
+                        </div>
+                        <div class="product-img">
+                          <img src="images/northern-lights-200w.jpg" alt="northern lights scarf">
+                        </div>
                       </div>
                       <p>Handmade by women in Agra, sales provide medical and educational support in this remote area of India. Crinkly 100% cotton.</p>
                       <p>Price: $29.99</p>
                       <div class="add-to-bag">
-                        <input type="submit" value="Add To Cart" onclick="addToCart()">
+                        <input type="submit" value="Add To Cart" id="4" onclick="addToCart(this.id)">
+                        <input type="submit" value="Remove" onclick="RemoveFromCart(4)">
                       </div>
                     </div>
                   </div>
@@ -169,13 +197,19 @@
                   <div class="col-sm-4">
                     <div class="item">
                       <h3>Ombre Infinity</h3>
-                      <div class="product-img">
-                        <img src="images/ombre-infinity-200w.jpg" alt="ombre infinity scarf">
+                      <div class="item-div">
+                        <div class="text">
+                          <p>prod-5</p>
+                        </div>
+                        <div class="product-img">
+                          <img src="images/ombre-infinity-200w.jpg" alt="ombre infinity scarf">
+                        </div>
                       </div>
                       <p>A dip-dye effect adds color and dimension to a cozy infinity scarf featuring a soft, chunky knit. 100% acrylic.</p>
                       <p>Price: $11.99</p>
                       <div class="add-to-bag">
-                        <input type="submit" value="Add To Cart" onclick="addToCart()">
+                        <input type="submit" value="Add To Cart" id="5" onclick="addToCart(this.id)">
+                        <input type="submit" value="Remove" onclick="RemoveFromCart(5)">
                       </div>
                     </div>
                   </div>
@@ -183,13 +217,19 @@
                   <div class="col-sm-4">
                     <div class="item">
                       <h3>Ashby Twill</h3>
-                      <div class="product-img">
-                        <img src="images/twill-200w.jpg" alt="ashby twill scarf">
+                      <div class="item-div">
+                        <div class="text">
+                          <p>prod-6</p>
+                        </div>
+                        <div class="product-img">
+                          <img src="images/twill-200w.jpg" alt="ashby twill scarf">
+                        </div>
                       </div>
                       <p>Faribault brings you the Ashby Twill Scarf in Natural. Woven with a 'broken' twill technique, the Ashby Twill Scarf has a slight zigzag texture. Made in USA, this timeless scarf is crafted with luxurious merino wool and finished with heather gray fringe. 100% Merino wool.</p>
                       <p>Price: $70.99</p>
                       <div class="add-to-bag">
-                        <input type="submit" value="Add To Cart" onclick="addToCart()">
+                        <input type="submit" value="Add To Cart" id="6" onclick="addToCart(this.id)">
+                        <input type="submit" value="Remove" onclick="RemoveFromCart(6)">
                       </div>
                     </div>
                   </div>
@@ -200,13 +240,19 @@
                 <div class="col-sm-4">
                   <div class="item">
                     <h3>Wool Cable Knit</h3>
-                    <div class="product-img">
-                      <img src="images/wool-cable-200w.jpeg" alt="wool cable knit scarf">
+                    <div class="item-div">
+                      <div class="text">
+                        <p>prod-7</p>
+                      </div>
+                      <div class="product-img">
+                        <img src="images/wool-cable-200w.jpeg" alt="wool cable knit scarf">
+                      </div>
                     </div>
                     <p>Warm yourself with this women's natural cable knit scarf, crafted from 100% Merino wool. Imported.</p>
                     <p>Price: $49.99</p>
                     <div class="add-to-bag">
-                      <input type="submit" value="Add To Cart" onclick="addToCart()">
+                      <input type="submit" value="Add To Cart" id="7" onclick="addToCart(this.id)">
+                      <input type="submit" value="Remove" onclick="RemoveFromCart(7)">
                     </div>
                   </div>
                 </div>
@@ -214,13 +260,19 @@
                 <div class="col-sm-4">
                   <div class="item">
                     <h3>Etro Paisley-Print Silk</h3>
-                    <div class="product-img">
-                      <img src="images/etro-200w.png" alt="etro paisley print silk scarf">
+                    <div class="item-div">
+                      <div class="text">
+                        <p>prod-8</p>
+                      </div>
+                      <div class="product-img">
+                        <img src="images/etro-200w.png" alt="etro paisley print silk scarf">
+                      </div>
                     </div>
                     <p>Luxurious silk scarf with subtle paisley pattern. 100% silk.</p>
                     <p>Price: $26.99</p>
                     <div class="add-to-bag">
-                      <input type="submit" value="Add To Cart" onclick="addToCart()">
+                      <input type="submit" value="Add To Cart" id="8" onclick="addToCart(this.id)">
+                      <input type="submit" value="Remove" onclick="RemoveFromCart(8)">
                     </div>
                   </div>
                 </div>
@@ -228,13 +280,19 @@
                 <div class="col-sm-4">
                   <div class="item">
                    <h3>Blue Jay Plaid</h3>
-                   <div class="product-img">
-                     <img src="images/blueJayPlaid-200w.jpg" alt="blue jay plaid scarf">
+                   <div class="item-div">
+                     <div class="text">
+                       <p>prod-9</p>
+                     </div>
+                     <div class="product-img">
+                       <img src="images/blueJayPlaid-200w.jpg" alt="blue jay plaid scarf">
+                     </div>
                    </div>
                    <p>Soft blend of silk, fine viscose and arylic. 100% silk.</p>
                    <p>Price: $27.85</p>
                    <div class="add-to-bag">
-                     <input type="submit" value="Add To Cart" onclick="addToCart()">
+                     <input type="submit" value="Add To Cart" id="9" onclick="addToCart(this.id)">
+                     <input type="submit" value="Remove" onclick="RemoveFromCart(9)">
                    </div>
                   </div>
                 </div>
@@ -250,7 +308,6 @@
   <footer class="footer">
     <p>W.W.W</p>
   </footer>
-
   <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
